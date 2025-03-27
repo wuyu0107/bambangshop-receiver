@@ -92,4 +92,8 @@ This is the place for you to write reflections:
 
 On the other hand, ```Mutex``` enforces exclusive access, allowing only one thread to access the data any time, regardless of whether it's reading or writing. In cases where we just need to read the notifications, Mutex becomes a performance bottleneck.
 
+> #### In this tutorial, we used lazy_static external library to define Vec and DashMap as a “static” variable. Compared to Java where we can mutate the content of a static variable via a static function, why did not Rust allow us to do so?
+
+In Rust, safety and concurrency correctness are enforced at compile time, so it doesn't allow the direct mutation of static variable like in Java. Static variables in Rust must be immutable by default, and mutations must be explicity synchronized and safe. This is the reason why we use ```lazy_static!``` to lazily initialize complex types and wrap them in syncrhonization.
+
 #### Reflection Subscriber-2
