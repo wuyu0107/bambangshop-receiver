@@ -59,15 +59,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   Open another new terminal, edit `ROCKET_PORT` in `.env` to `8003`, then execute `cargo run`.
 
 ## Mandatory Checklists (Subscriber)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
+-   [✔] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create SubscriberRequest model struct.`
-    -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
--   **STAGE 3: Implement services and controllers**
+    -   [✔] Commit: `Create Notification model struct.`
+    -   [✔] Commit: `Create SubscriberRequest model struct.`
+    -   [✔] Commit: `Create Notification database and Notification repository struct skeleton.`
+    -   [✔] Commit: `Implement add function in Notification repository.`
+    -   [✔] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [✔] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+-   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
     -   [ ] Commit: `Implement subscribe function in Notification controller.`
@@ -85,5 +85,11 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+
+> #### In this tutorial, we used RwLock<> to synchronise the use of Vec of Notifications. Explain why it is necessary for this case, and explain why we do not use Mutex<> instead?
+
+```RwLock``` (Read-Write Lock) offers a more fine-frained locking strategy than ```Mutex```. It allows multiple readers to access the data simultaneously, but allowing one writer at a time. This is useful when reads happen frequently, but writes are less frequent. This improves performance and concurrency by not blocking read access unnecessarily. 
+
+On the other hand, ```Mutex``` enforces exclusive access, allowing only one thread to access the data any time, regardless of whether it's reading or writing. In cases where we just need to read the notifications, Mutex becomes a performance bottleneck.
 
 #### Reflection Subscriber-2
