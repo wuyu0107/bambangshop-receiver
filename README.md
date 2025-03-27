@@ -97,3 +97,15 @@ On the other hand, ```Mutex``` enforces exclusive access, allowing only one thre
 In Rust, safety and concurrency correctness are enforced at compile time, so it doesn't allow the direct mutation of static variable like in Java. Static variables in Rust must be immutable by default, and mutations must be explicity synchronized and safe. This is the reason why we use ```lazy_static!``` to lazily initialize complex types and wrap them in syncrhonization.
 
 #### Reflection Subscriber-2
+
+> #### Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+No, I did not explore ```src/lib.rs``` or other parts of the code outside the tutorial code. THe main reason was that I focused on following the tutorial instructions closely to make sure that I have fully understand what was going on with the code and how the design patterns are implemented into this tutorial. I plan to look into exploring ```lib.rs``` as the next step before starting my group project and future projects.
+
+> #### Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+The observer pattern makes it very easy to plug in addition subscribers into the system since each subscriber only needs to implement a common interface. The publisher can broadcast updates without caring about the details or each subscriber. However, spawning more than one instance increases the complexity of the code in the Main application. We would neet to introduce synchornization across processses and require additional architectural considerations to manage coordination between app instances.
+
+> #### Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+Yes, I have tried writing some basic tests during the tutorial. The tests I wrote helped me confirm that key parts of the code were working as expected. Although the tests were simple, they were useful for checking logic without the need to trigger requests through the POstman each time. 
